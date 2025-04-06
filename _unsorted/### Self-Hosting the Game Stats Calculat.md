@@ -1,0 +1,248 @@
+### Self-Hosting the Game Stats Calculator
+
+Here's a comprehensive guide to self-hosting the Game Stats Calculator application on your own server or local machine.
+
+## System Requirements
+
+- **Node.js**: Version 16.x or higher (18.x recommended)
+- **npm** or **yarn**: Latest stable version
+- **Git**: (Optional) For cloning the repository
+- **Operating System**: Windows, macOS, or Linux
+
+
+## Option 1: Quick Setup with Vercel
+
+The easiest way to deploy this application is using Vercel:
+
+1. Fork or clone the repository to your GitHub account
+2. Go to [vercel.com](https://vercel.com) and sign up/login
+3. Click "New Project" and import your repository
+4. Vercel will automatically detect it's a Next.js project and configure the build settings
+5. Click "Deploy" and your application will be live in minutes
+
+
+## Option 2: Manual Setup
+
+### Step 1: Get the Code
+
+Either clone the repository using Git:
+git clone https://github.com/yourusername/game-stats-calculator.git
+cd game-stats-calculator
+Or download the code as a ZIP file and extract it to a folder.
+
+### Step 2: Install Dependencies
+Navigate to the project directory and install the dependencies:
+
+```shellscript
+# Using npm
+npm install
+
+# Using yarn
+yarn install
+```
+
+### Step 3: Development Mode
+# Using npm
+npm run dev
+
+# Using yarn
+yarn dev
+
+This will start the development server at `http://localhost:3000`. You can access the application in your web browser.
+
+### Step 4: Production Build
+For a production deployment, you'll need to build the application:
+
+```shellscript
+# Using npm
+npm run build
+npm start
+
+# Using yarn
+yarn build
+yarn start
+```
+
+This will create an optimized production build and start the server at `http://localhost:3000`.
+
+## Deployment Options
+
+### Option 1: Static Export
+
+You can create a static export of the application that can be hosted on any static hosting service:
+
+1. Add the following to your `next.config.js`:
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  // Other config options...
+}
+
+module.exports = nextConfig
+
+2. 2. Build the static export:
+
+
+```shellscript
+```shellscript
+npm run build
+```
+```
+
+The static files will be in the `out` directory, which you can upload to any static hosting service like:
+
+- GitHub Pages
+- Netlify
+- Amazon S3
+- Firebase Hosting
+
+
+### Option 2: Docker Deployment
+
+For containerized deployment:
+
+1. Create a `Dockerfile` in the root directory:
+FROM node:18-alpine AS base
+
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /app
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD ["node", "server.js"]
+
+
+
+2. 2. Build and run the Docker container:
+
+
+```shellscript
+docker build -t game-stats-calculator .
+docker run -p 3000:3000 game-stats-calculator
+```
+
+
+### Option 3: Traditional Hosting
+
+You can deploy the application on traditional hosting services that support Node.js:
+
+1. Build the application as described in Step 4
+2. Upload the entire project directory to your hosting service
+3. Configure your hosting service to run `npm start` or `node server.js`
+
+
+Popular options include:
+
+- DigitalOcean
+- Heroku
+- AWS Elastic Beanstalk
+- Google Cloud Run
+
+
+## Customizing the Data
+
+The application uses JSON files located in the `data/` directory. You can modify these files to update the game data:
+
+- `rune.json` - Contains rune data with stats
+- `rune_stone.json` - Contains runestone data
+- `rune_aura.json` - Contains aura effects
+- `adventure_class.json` - Contains class data and stats
+- `stat.json` - Contains the list of available stats
+- `buff.json` - Contains buff information
+
+
+To update the data:
+
+1. Edit the corresponding JSON file in the `data/` directory
+2. Make sure to maintain the same structure and format
+3. Restart the application to see the changes
+
+
+## Troubleshooting Common Issues
+
+### Issue: Application fails to start
+
+**Solution**: Check if the required ports (default: 3000) are available and not being used by another application.
+
+### Issue: Changes to data files are not reflected
+
+**Solution**: Make sure to restart the development server after modifying the JSON files.
+
+### Issue: Styling issues in production
+
+**Solution**: Ensure that the Tailwind CSS configuration is properly set up and that the build process includes CSS processing.
+
+### Issue: "Module not found" errors
+
+**Solution**: Run `npm install` again to ensure all dependencies are properly installed.
+
+## Advanced Configuration
+
+### Environment Variables
+
+You can customize the application behavior using environment variables. Create a `.env.local` file in the root directory:
+
+NEXT_PUBLIC_APP_NAME=My Game Calculator
+NEXT_PUBLIC_MAX_SETUPS=3
+
+### Custom Themes
+
+To customize the theme colors, edit the `tailwind.config.js` file and modify the color palette:
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#3b82f6',
+          // Add more color variations
+        },
+        // Add more custom colors
+      },
+    },
+  },
+  // Other config options...
+}
+
+## Support and Maintenance
+For ongoing maintenance:
+Regularly update dependencies:
+
+```shellscript
+npm update
+```
+
+Check for security vulnerabilities:
+
+```shellscript
+npm audit
+```
+
+3. Keep your Node.js version up to date
+
