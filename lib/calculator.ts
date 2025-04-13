@@ -152,4 +152,3 @@ export function calculateTotalStats(
 
   return formattedStats
 }
-

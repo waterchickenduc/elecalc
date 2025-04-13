@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { useState, useEffect } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -24,17 +24,21 @@ export default function GameCalculator() {
 
   // Update total stats whenever a setup's runes or classes change
   useEffect(() => {
-    const updatedSetups = setups.map((setup) => ({
+    const updatedSetups = setups.map(setup => ({
       ...setup,
-      totalStats: calculateTotalStats(setup.runes, setup.classes, runeAuraData, adventureClassData),
+      totalStats: calculateTotalStats(setup.runes, setup.classes, runeAuraData, adventureClassData)
     }))
-
+    
     // Only update state if there's an actual change to prevent infinite loops
-    const hasChanged = JSON.stringify(updatedSetups) !== JSON.stringify(setups)
+    const hasChanged = JSON.stringify(updatedSetups) !== JSON.stringify(setups);
     if (hasChanged) {
-      setSetups(updatedSetups)
+      setSetups(updatedSetups);
     }
-  }, [setups.flatMap((s) => [s.runes, s.classes])])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(setups.map(s => ({
+    runes: s.runes.map(r => r["Rune Name"]),
+    classes: s.classes
+  })))]);
 
   const updateSetup = (setupId: number, updatedSetup: Partial<Setup>) => {
     setSetups((prevSetups) => prevSetups.map((setup) => (setup.id === setupId ? { ...setup, ...updatedSetup } : setup)))
@@ -82,7 +86,7 @@ export default function GameCalculator() {
             <TabsTrigger value="setup-3">Setup 3</TabsTrigger>
           </TabsList>
 
-          {setups.map((setup, index) => (
+          {setups.map((setup) => (
             <TabsContent key={setup.id} value={`setup-${setup.id}`}>
               <SetupBuilder
                 setup={setup}
@@ -99,4 +103,3 @@ export default function GameCalculator() {
     </div>
   )
 }
-

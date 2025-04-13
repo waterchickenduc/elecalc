@@ -40,4 +40,3 @@ export default function StatsDisplay({ setup }: StatsDisplayProps) {
     </Card>
   )
 }
-

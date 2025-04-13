@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { ChevronDown, ChevronRight } from "lucide-react"
+import { ChevronDown, ChevronRight } from 'lucide-react'
 
 interface ClassSelectorProps {
   adventureClassData: any
@@ -104,4 +104,3 @@ export default function ClassSelector({ adventureClassData, selectedClasses, onT
     </div>
   )
 }
-

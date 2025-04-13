@@ -101,4 +101,3 @@ export default function ComparisonTable({ setups, statList }: ComparisonTablePro
     </Card>
   )
 }
-

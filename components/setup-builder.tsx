@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { X } from "lucide-react"
+import { X } from 'lucide-react'
 import type { Setup } from "@/lib/calculator"
 import RuneSelector from "./rune-selector"
 import ClassSelector from "./class-selector"
@@ -176,4 +176,3 @@ export default function SetupBuilder({
     </div>
   )
 }
-

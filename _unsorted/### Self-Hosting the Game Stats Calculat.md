@@ -41,6 +41,21 @@ npm install
 yarn install
 ```
 
+```shellscript
+npx create-next-app@latest .
+```
+
+When prompted, you can select the following options:
+
+- Would you like to use TypeScript? → Yes
+- Would you like to use ESLint? → Yes
+- Would you like to use Tailwind CSS? → Yes
+- Would you like to use `src/` directory? → No
+- Would you like to use App Router? → Yes
+- Would you like to customize the default import alias (@/*)? → Yes (use @/)
+
+npm install @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-scroll-area @radix-ui/react-separator @radix-ui/react-tabs lucide-react class-variance-authority clsx tailwind-merge
+
 ### Step 3: Development Mode
 # Using npm
 npm run dev
