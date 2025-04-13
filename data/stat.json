@@ -1,56 +1,56 @@
 [
   {
-    "Stat": "Health"
+      "Stat": "Health"
   },
   {
-    "Stat": "P. Atk"
+      "Stat": "P. Atk"
   },
   {
-    "Stat": "P. Def"
+      "Stat": "P. Def"
   },
   {
-    "Stat": "M. Atk"
+      "Stat": "M. Atk"
   },
   {
-    "Stat": "M. Def"
+      "Stat": "M. Def"
   },
   {
-    "Stat": "Ele. Atk"
+      "Stat": "Ele. Atk"
   },
   {
-    "Stat": "Ele. Def"
+      "Stat": "Ele. Def"
   },
   {
-    "Stat": "Spirit Atk"
+      "Stat": "Spirit Atk"
   },
   {
-    "Stat": "Increase STR"
+      "Stat": "Increase STR"
   },
   {
-    "Stat": "Increase AGI"
+      "Stat": "Increase AGI"
   },
   {
-    "Stat": "Increase INT"
+      "Stat": "Increase INT"
   },
   {
-    "Stat": "Cr. Rate"
+      "Stat": "Cr. Rate"
   },
   {
-    "Stat": "Cr. Dmg"
+      "Stat": "Cr. Dmg"
   },
   {
-    "Stat": "Skill CD"
+      "Stat": "Skill CD"
   },
   {
-    "Stat": "Atk Delay"
+      "Stat": "Atk Delay"
   },
   {
-    "Stat": "HP Recovery per Kill"
+      "Stat": "HP Recovery per Kill"
   },
   {
-    "Stat": "HP Recovery"
+      "Stat": "HP Recovery"
   },
   {
-    "Stat": "Movementspeed"
+      "Stat": "Movementspeed"
   }
 ]

@@ -54,7 +54,7 @@ export default function GameCalculator() {
     <div className="container mx-auto py-8 px-4">
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle className="text-2xl md:text-3xl">Game Stats Calculator</CardTitle>
+          <CardTitle className="text-2xl md:text-3xl">Elemental 2D Compare Tool</CardTitle>
           <CardDescription>Create up to 3 different setups and compare their stats</CardDescription>
         </CardHeader>
         <CardContent>

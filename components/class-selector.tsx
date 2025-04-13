@@ -43,18 +43,18 @@ export default function ClassSelector({ adventureClassData, selectedClasses, onT
 
       <ScrollArea className="h-[400px] pr-4">
         <div className="space-y-4">
-          {adventureClassData.Adventurer.paths.map((path: any, pathIndex: number) => (
-            <Card key={`${path.branch}-${pathIndex}`}>
+          {adventureClassData.Adventurer.paths.map((path: any) => (
+            <Card key={`${path.branch}`}>
               <Collapsible
-                open={expandedBranches.includes(`${path.branch}-${pathIndex}`)}
-                onOpenChange={() => toggleBranch(`${path.branch}-${pathIndex}`)}
+                open={expandedBranches.includes(`${path.branch}`)}
+                onOpenChange={() => toggleBranch(`${path.branch}`)}
               >
                 <CollapsibleTrigger className="w-full">
                   <CardContent className="p-3 flex items-center justify-between">
                     <h4 className="font-medium">
-                      {path.branch} Path {pathIndex + 1}
+                      {path.branch} Path 
                     </h4>
-                    {expandedBranches.includes(`${path.branch}-${pathIndex}`) ? (
+                    {expandedBranches.includes(`${path.branch}`) ? (
                       <ChevronDown className="h-4 w-4" />
                     ) : (
                       <ChevronRight className="h-4 w-4" />
